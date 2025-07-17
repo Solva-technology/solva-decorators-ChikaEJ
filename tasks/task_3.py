@@ -5,7 +5,7 @@ def validate_positive(func):
 
     @wraps(func)
     def wrapper(*args, **kwargs):
-        if min(args or kwargs or 0) <= 0:
+        if min(args or kwargs.values()) < 0:
             raise ValueError("Все аргументы должны быть положительными")
         return func(*args, **kwargs)
     return wrapper
